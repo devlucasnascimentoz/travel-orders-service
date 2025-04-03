@@ -1,107 +1,66 @@
-Travel Orders Service API
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-Este é um microsserviço de gerenciamento de pedidos de viagem corporativa, desenvolvido com Laravel 12, utilizando autenticação via API com JWT. A API permite operações CRUD para pedidos de viagem, com filtros por status, período e destino. Além disso, permite a alteração de status e o cancelamento de pedidos, com validação de permissões e notificações para o usuário.
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-Requisitos
-PHP 8.2 ou superior
-Docker e Docker Compose
-Composer
-MySQL 8.x
+## About Laravel
 
-Instalação
-1. Clonar o repositório
-Primeiro, clone o repositório para sua máquina local:
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-git clone https://github.com/seuusuario/travel-orders-service.git
-cd travel-orders-service
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-2. Construir a imagem Docker
-A API pode ser executada localmente utilizando Docker. Para isso, execute o comando abaixo para construir as imagens e iniciar os containers:
-docker-compose up --build -d
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-4. Instalar as dependências
-Após o container estar rodando, instale as dependências do projeto:
-docker-compose exec app composer install --no-dev --optimize-autoloader
+## Learning Laravel
 
-4. Configurar o ambiente
-Você precisará configurar as variáveis de ambiente. Uma vez o projeto clonado, copie o arquivo .env.example para .env:
-cp .env.example .env
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-Edite o arquivo .env conforme necessário. As configurações padrão incluem as variáveis de banco de dados, como:
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=travel_orders
-DB_USERNAME=root
-DB_PASSWORD=root
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-5. Gerar a chave de aplicação
-Para garantir que a chave de criptografia da aplicação esteja configurada corretamente, execute:
-docker-compose exec app php artisan key:generate
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-7. Rodar as migrações
-Execute as migrações para configurar o banco de dados:
-docker-compose exec app php artisan migrate
+## Laravel Sponsors
 
-7. Popular o banco de dados (opcional)
-Se você quiser popular o banco com dados de exemplo, você pode rodar o seeder:
-docker-compose exec app php artisan db:seed
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-Execução Local
-Agora, sua aplicação Laravel estará rodando na porta 8000 dentro do container. Você pode acessar a API na seguinte URL:
-http://localhost:8000
+### Premium Partners
 
-Para testar se a API está funcionando, você pode acessar a rota de teste que retorna uma resposta simples:
-GET /test
-Isso retornará a seguinte resposta:
-{
-    "message": "API está funcionando"
-}
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[WebReinvent](https://webreinvent.com/)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Jump24](https://jump24.co.uk)**
+- **[Redberry](https://redberry.international/laravel/)**
+- **[Active Logic](https://activelogic.com)**
+- **[byte5](https://byte5.de)**
+- **[OP.GG](https://op.gg)**
 
-Exemplo de rotas da API
-A API está protegida por autenticação JWT. Para acessar as rotas protegidas, você precisa enviar um token JWT no cabeçalho Authorization da seguinte forma:
-Authorization: Bearer {seu-token-jwt}
+## Contributing
 
-1. Listar Pedidos de Viagem
-GET /api/travel-orders
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-Você pode filtrar os pedidos de viagem com os seguintes parâmetros:
-status – Filtra por status do pedido.
-destination – Filtra por destino (parcial).
-start_date e end_date – Filtra por intervalo de datas.
+## Code of Conduct
 
-2. Criar Pedido de Viagem
-POST /api/travel-orders
-O corpo da requisição deve conter os dados do pedido, como:
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-{
-    "destination": "Paris",
-    "start_date": "2025-05-01",
-    "end_date": "2025-05-07",
-    "status": "pendente"
-}
+## Security Vulnerabilities
 
-3. Mostrar Pedido de Viagem
-GET /api/travel-orders/{id}
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-5. Alterar Status de Pedido
-PATCH /api/travel-orders/{id}/status
+## License
 
-Exemplo de corpo de requisição:
-{
-    "status": "aprovado"
-}
-
-5. Cancelar Pedido de Viagem
-POST /api/travel-orders/{id}/cancel
-Esse endpoint só pode ser usado para pedidos com status "aprovado".
-
-Testes
-Para rodar os testes do projeto, execute o seguinte comando:
-docker-compose exec app ./vendor/bin/phpunit
-Isso executará todos os testes automatizados do projeto utilizando PHPUnit.
-
-Informações Adicionais
-- A aplicação utiliza JWT para autenticação via API. Certifique-se de passar o token correto nos cabeçalhos das requisições.
-- O banco de dados utilizado é MySQL 8.x e a aplicação é executada no PHP 8.2 com o servidor PHP-FPM.
-- O projeto foi configurado para rodar com Docker e Docker Compose, facilitando a execução em qualquer ambiente.
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
