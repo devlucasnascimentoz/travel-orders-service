@@ -14,7 +14,7 @@ Instalação
 1. Clonar o repositório
 Primeiro, clone o repositório para sua máquina local:
 
-git clone https://github.com/seuusuario/travel-orders-service.git
+git clone https://github.com/devlucasnascimentoz/travel-orders-service.git
 cd travel-orders-service
 
 2. Construir a imagem Docker
